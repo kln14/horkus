@@ -1,0 +1,13 @@
+#Turns the rewrite engine on.
+RewriteEngine on
+
+#Fix missing trailing slash character on folders.
+RewriteRule ^([^.?]+[^.?/])$ $1/ [R,L]
+
+#www.domain.com and domain.com will map to the folder {root}/folder1/
+RewriteCond %{HTTP:Host} ^(?:www\.)?pinoakshoppingcenter\.com$
+RewriteRule (.*) /wordpress/$1 [NC,L,NS]
+
+#www.otherdomain.com and otherdomain.com will map to the folder {root}/folder2/
+RewriteCond %{HTTP:Host} ^(?:www\.)?horkusproperties\.com$
+RewriteRule (.*) /horkusproperties/$1 [NC,L,NS]
